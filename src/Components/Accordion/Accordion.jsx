@@ -3,15 +3,24 @@ import data from "./data.ts";
 
 export default function Accordion() {
   const [selected, setSelected] = useState();
+  const [multiSelection, setMultiSelection] = useState(false);
 
   function handleSingleSelection(currentId) {
     setSelected(currentId === selected ? null : currentId);
   }
 
+  function handleMultiSelection() {}
+
   return (
     <>
-      <div className="flex justify-center text-xl">
-        <div className="accordion w-1/3 mt-8 text-purple-200">
+      <div className="flex justify-center flex-col items-center text-xl">
+        <button
+          onClick={() => setMultiSelection(!multiSelection)}
+          className="bg-pink-900 text-white p-3 mt-2.5"
+        >
+          Enable Multi Selection
+        </button>
+        <div className="accordion w-1/3 mt-8 text-white">
           {data && data.length > 0 ? (
             data.map((dataItem) => (
               <div className="bg-pink-900 mb-2.5 p-3" key={dataItem.id}>
