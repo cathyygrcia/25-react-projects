@@ -5,7 +5,7 @@ export default function Accordion() {
   const [selected, setSelected] = useState();
 
   function handleSingleSelection(currentId) {
-    console.log(currentId);
+    setSelected(currentId === selected ? null : currentId);
   }
 
   return (
@@ -21,6 +21,9 @@ export default function Accordion() {
                 >
                   <h3>{dataItem.question}</h3>
                   <span className="flex justify-center">+</span>
+                  {selected === dataItem.id ? (
+                    <div>{dataItem.answer}</div>
+                  ) : null}
                 </div>
               </div>
             ))
