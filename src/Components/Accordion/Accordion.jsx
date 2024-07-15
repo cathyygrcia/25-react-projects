@@ -11,10 +11,10 @@ export default function Accordion() {
   return (
     <>
       <div className="flex justify-center text-xl">
-        <div className="accordion w-1/3 mt-8 text-purple-900">
+        <div className="accordion w-1/3 mt-8 text-purple-200">
           {data && data.length > 0 ? (
             data.map((dataItem) => (
-              <div className="bg-pink-300 mb-2.5 p-3" key={dataItem.id}>
+              <div className="bg-pink-900 mb-2.5 p-3" key={dataItem.id}>
                 <div
                   onClick={() => handleSingleSelection(dataItem.id)}
                   className="title text-center cursor-pointer flex justify-between"
