@@ -26,7 +26,9 @@ export default function Accordion() {
       <div className="flex justify-center flex-col items-center text-xl">
         <button
           onClick={() => setEnableMultiSelection(!enableMultiSelection)}
-          className="bg-pink-900 text-white p-3 mt-2.5"
+          className={`text-white p-3 mt-2.5 ${
+            enableMultiSelection ? "bg-pink-500 ring-red-300" : "bg-pink-900"
+          }`}
         >
           Enable Multi Selection
         </button>
