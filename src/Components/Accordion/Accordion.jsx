@@ -3,19 +3,29 @@ import data from "./data.ts";
 
 export default function Accordion() {
   const [selected, setSelected] = useState();
-  const [multiSelection, setMultiSelection] = useState(false);
+  const [enableMultiSelection, setEnableMultiSelection] = useState(false);
+  const [multiple, setMultiple] = useState([]);
 
   function handleSingleSelection(currentId) {
     setSelected(currentId === selected ? null : currentId);
   }
 
-  function handleMultiSelection() {}
+  function handleMultiSelection(currentId) {
+    let cpyMultiple = [...multiple];
+    const findIndexOfCurrentId = cpyMultiple.indexOf(currentId);
+
+    console.log(findIndexOfCurrentId, multiple);
+    if (findIndexOfCurrentId === -1) cpyMultiple.push(currentId);
+    else cpyMultiple.splice(findIndexOfCurrentId, 1);
+
+    setMultiple(cpyMultiple);
+  }
 
   return (
     <>
       <div className="flex justify-center flex-col items-center text-xl">
         <button
-          onClick={() => setMultiSelection(!multiSelection)}
+          onClick={() => setEnableMultiSelection(!enableMultiSelection)}
           className="bg-pink-900 text-white p-3 mt-2.5"
         >
           Enable Multi Selection
@@ -25,14 +35,19 @@ export default function Accordion() {
             data.map((dataItem) => (
               <div className="bg-pink-900 mb-2.5 p-3" key={dataItem.id}>
                 <div
-                  onClick={() => handleSingleSelection(dataItem.id)}
+                  onClick={
+                    enableMultiSelection
+                      ? () => handleMultiSelection(dataItem.id)
+                      : () => handleSingleSelection(dataItem.id)
+                  }
                   className="title text-center cursor-pointer flex justify-between"
                 >
                   <h3>{dataItem.question}</h3>
                   <span className="flex justify-center">+</span>
                 </div>
                 <div className="mt-2">
-                  {selected === dataItem.id ? (
+                  {selected === dataItem.id ||
+                  multiple.indexOf(dataItem.id) !== -1 ? (
                     <div>{dataItem.answer}</div>
                   ) : null}
                 </div>
