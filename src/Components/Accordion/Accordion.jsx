@@ -14,7 +14,6 @@ export default function Accordion() {
     let cpyMultiple = [...multiple];
     const findIndexOfCurrentId = cpyMultiple.indexOf(currentId);
 
-    console.log(findIndexOfCurrentId, multiple);
     if (findIndexOfCurrentId === -1) cpyMultiple.push(currentId);
     else cpyMultiple.splice(findIndexOfCurrentId, 1);
 
@@ -25,9 +24,13 @@ export default function Accordion() {
     <>
       <div className="flex justify-center flex-col items-center text-xl">
         <button
-          onClick={() => setEnableMultiSelection(!enableMultiSelection)}
+          onClick={() => {
+            setEnableMultiSelection(!enableMultiSelection);
+            setSelected(null);
+            setMultiple([]);
+          }}
           className={`text-white p-3 mt-2.5 ${
-            enableMultiSelection ? "bg-pink-500 ring-red-300" : "bg-pink-900"
+            enableMultiSelection ? "bg-pink-700 " : "bg-pink-900"
           }`}
         >
           Enable Multi Selection

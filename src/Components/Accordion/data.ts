@@ -1,21 +1,21 @@
 const data = [
   {
     id: "1",
-    question: "What are accordion components?",
+    question: "What's my name, age, and place of residence?",
     answer:
-      "Accordion components are user interface elements used for organizing and presenting information",
+      "My name is Cathy Garcia! I am 27 years young and I live in Anaheim, CA.",
   },
   {
     id: "2",
-    question: "What are they used for?",
+    question: "Favorite Hobbies?",
     answer:
-      "They are commonly employed in various contexts, including FAQS, product description, and details",
+      "Live music is my passion! Besides going concerts, I also enjoy running and coding on my free time :)",
   },
   {
     id: "3",
-    question: "Accordion as a musical instrument",
+    question: "Favorite type of music?",
     answer:
-      "The accordion is a musical instrument with a keyboard and bellows.",
+      "My music tastes varies alot. Reggae and ska will always be number one in my heart! I also love EDM, specifically trance and techno. Some other genres include punk, oldies, rock.",
   },
 ];
 
