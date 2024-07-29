@@ -8,7 +8,7 @@ function App() {
     <>
       <Accordion />
       <RandomColors />
-      <StarRating />
+      <StarRating noOfStars={10} />
     </>
   );
 }
