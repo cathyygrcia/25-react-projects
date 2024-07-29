@@ -10,6 +10,7 @@ export default function StarRating({ noOfStars }: Props) {
 
   function handleClickedStars(index: any) {
     setRating(index + 1);
+    console.log(index);
   }
 
   return (
@@ -21,6 +22,7 @@ export default function StarRating({ noOfStars }: Props) {
             index < rating ? "text-yellow-500" : "text-gray-400"
           }`}
           onClick={() => handleClickedStars(index)}
+          onMouseOver={() => handleClickedStars(index)}
         />
       ))}
     </div>
