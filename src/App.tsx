@@ -1,5 +1,6 @@
 import "./App.css";
 import Accordion from "./Components/Accordion/Accordion";
+import ImageSlider from "./Components/Image-Slider/ImageSlider";
 import RandomColors from "./Components/Random Color/RandomColor";
 import StarRating from "./Components/Star Rating/StarRating";
 
@@ -9,6 +10,7 @@ function App() {
       <Accordion />
       <RandomColors />
       <StarRating noOfStars={10} />
+      <ImageSlider url={"https://picsum.photos/v2/list"} limit={10} pages={1} />
     </>
   );
 }
