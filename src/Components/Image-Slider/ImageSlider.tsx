@@ -8,8 +8,9 @@ type Props = {
 };
 
 type Image = {
-  url: string;
+  download_url: string;
   author: string;
+  id: number;
 };
 
 export default function ImageSlider({ url, limit, pages, author }: Props) {
@@ -47,7 +48,7 @@ export default function ImageSlider({ url, limit, pages, author }: Props) {
   return (
     <>
       {images.map((imageItem) => (
-        <p>{imageItem.author}</p>
+        <img src={imageItem.download_url} alt="image" key={imageItem.id} />
       ))}
     </>
   );
