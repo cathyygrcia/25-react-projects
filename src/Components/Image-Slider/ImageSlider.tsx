@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 type Props = {
   url: string;
   limit: number;
   pages: number;
-  author?: string;
 };
 
 type Image = {
-  url: string;
+  download_url: string;
   author: string;
+  id: number;
 };
 
-export default function ImageSlider({ url, limit, pages, author }: Props) {
+export default function ImageSlider({ url, limit, pages }: Props) {
   const [images, setImages] = useState<Image[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -42,13 +43,37 @@ export default function ImageSlider({ url, limit, pages, author }: Props) {
     fetchImages(url);
   }, [url]);
 
+  if (loading) {
+    return <div>Loading data ! Please wait</div>;
+  }
+
+  if (errorMsg !== null) {
+    return <div>Error Occurred{errorMsg}</div>;
+  }
+
   console.log(images);
 
   return (
     <>
-      {images.map((imageItem) => (
-        <p>{imageItem.author}</p>
-      ))}
+      <div className="flex justify-center items-center relative w-1/3">
+        <BsArrowLeftCircleFill className="text-3xl" />
+        {images && images.length
+          ? images.map((imageItem) => (
+              <img
+                key={imageItem.id}
+                alt={imageItem.download_url}
+                src={imageItem.download_url}
+                className="current-image"
+              />
+            ))
+          : null}
+        <BsArrowRightCircleFill className="text-3xl" />
+        <span>
+          {images && images.length
+            ? images.map((_, index) => <button key={index}></button>)
+            : null}
+        </span>
+      </div>
     </>
   );
 }
