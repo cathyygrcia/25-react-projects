@@ -23,13 +23,13 @@ export default function LoadMore() {
         throw new Error("No data found");
       }
       const result = await response.json();
-      if (result) {
-        setProducts(result.products);
-        setLoading(false);
+      if (result && result.products && result.products.length) {
+        setProducts((prevProducts) => [...prevProducts, ...result.products]);
       }
       console.log(result);
     } catch (e: any) {
       console.log(e.message);
+    } finally {
       setLoading(false);
     }
   }
@@ -38,15 +38,12 @@ export default function LoadMore() {
     fetchProducts();
   }, [count]);
 
-  if (loading) {
-    <p>Loading data ! Please wait</p>;
-  }
-
   return (
     <>
       <div className="flex flex-col gap-5">
-        <div className=" grid grid-cols-4 gap-2.5">
-          {products && products.length
+        {loading && <p>Loading data! Please wait...</p>}
+        <div className="grid grid-cols-4 gap-2.5">
+          {products.length > 0
             ? products.map((item) => (
                 <div
                   key={item.id}
@@ -56,10 +53,14 @@ export default function LoadMore() {
                   <p>{item.title}</p>
                 </div>
               ))
-            : null}
+            : !loading && <p>No products available.</p>}
         </div>
-        <div className="flex justify-center   text-white">
-          <button className="flex justify-center w-1/5 bg-gray-600">
+        <div className="flex justify-center text-white">
+          <button
+            onClick={() => setCount(count + 1)}
+            className="flex justify-center w-1/5 bg-gray-600"
+            disabled={loading}
+          >
             Load More Products
           </button>
         </div>
