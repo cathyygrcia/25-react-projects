@@ -2,6 +2,7 @@ import "./App.css";
 import Accordion from "./Components/Accordion/Accordion";
 import ImageSlider from "./Components/Image-Slider/ImageSlider";
 import LoadMore from "./Components/Load-More/LoadMore";
+import QrCodeGenerator from "./Components/QR-Code-Generator/QrCodeGenerator";
 import RandomColors from "./Components/Random Color/RandomColor";
 import StarRating from "./Components/Star Rating/StarRating";
 
@@ -13,6 +14,7 @@ function App() {
       <StarRating noOfStars={10} />
       <ImageSlider url={"https://picsum.photos/v2/list"} limit={5} pages={1} />
       <LoadMore />
+      <QrCodeGenerator />
     </>
   );
 }
