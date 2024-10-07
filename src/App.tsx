@@ -5,6 +5,7 @@ import LoadMore from "./Components/Load-More/LoadMore";
 import QrCodeGenerator from "./Components/QR-Code-Generator/QrCodeGenerator";
 import RandomColors from "./Components/Random Color/RandomColor";
 import StarRating from "./Components/Star Rating/StarRating";
+import DarkLightMode from "./Dark-Light-Mode/DarkLightMode";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <ImageSlider url={"https://picsum.photos/v2/list"} limit={5} pages={1} />
       <LoadMore />
       <QrCodeGenerator />
+      <DarkLightMode />
     </>
   );
 }
