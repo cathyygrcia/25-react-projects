@@ -1,23 +1,23 @@
-import { useState } from "react";
+import useLocalStorage from "./UseLocalStorage";
 
 export default function DarkLightMode() {
-  const [buttonColor, setButtonColor] = useState("white");
+  const [theme, setTheme] = useLocalStorage({
+    key: "theme",
+    defaultValue: "dark",
+  });
+
+  function handleToggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  console.log(theme);
 
   return (
-    <>
-      <div className="w-screen h-screen">
-        <div className="container">
-          <p>Hello World</p>
-          <button
-            className={`border-solid bg-${buttonColor} text-white p-1.5`}
-            onClick={() =>
-              setButtonColor(buttonColor === "white" ? "black" : "white")
-            }
-          >
-            Change Theme
-          </button>
-        </div>
+    <div className="h-screen">
+      <div className="container">
+        <p>Welcome!</p>
+        <button onClick={handleToggleTheme}>Change Theme</button>
       </div>
-    </>
+    </div>
   );
 }
