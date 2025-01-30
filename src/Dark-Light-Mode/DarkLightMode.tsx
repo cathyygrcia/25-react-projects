@@ -10,18 +10,13 @@ export default function DarkLightMode() {
     setTheme(theme === "light" ? "dark" : "light");
   }
 
+  console.log(theme);
+
   return (
-    <div
-      className={`h-screen flex justify-center items-center ${
-        theme === "light" ? "bg-white text-black" : "bg-black text-white"
-      }`}
-    >
-      <div>
+    <div className="h-screen flex justify-center items-center">
+      <div className="">
         <p>Welcome!</p>
-        <button
-          className="px-4 py-2 bg-gray-300 text-black dark:bg-gray-800 dark:text-white rounded-md"
-          onClick={handleToggleTheme}
-        >
+        <button className={theme} onClick={handleToggleTheme}>
           Change Theme
         </button>
       </div>
