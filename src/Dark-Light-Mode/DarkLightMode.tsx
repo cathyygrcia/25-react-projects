@@ -13,10 +13,12 @@ export default function DarkLightMode() {
   console.log(theme);
 
   return (
-    <div className="h-screen">
-      <div className="container">
+    <div className="h-screen flex justify-center items-center">
+      <div className="">
         <p>Welcome!</p>
-        <button onClick={handleToggleTheme}>Change Theme</button>
+        <button className={theme} onClick={handleToggleTheme}>
+          Change Theme
+        </button>
       </div>
     </div>
   );
